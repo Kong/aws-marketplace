@@ -1,6 +1,6 @@
 # Kong for Kubernetes and AWS Elastic Kubernetes Services
 
-![Kong](https://github.com/Kong/aws-marketplace/blob/media/Kong2.jpeg) ![EKS](https://github.com/Kong/aws-marketplace/blob/media/EKS.png)
+![Kong](https://github.com/Kong/aws-marketplace/screenshots/Kong2.jpeg) ![EKS](https://github.com/Kong/aws-marketplace/screenshots/EKS.png)
 
 The only fully native Kubernetes Ingress Controller for enhanced API management.
 
