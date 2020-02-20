@@ -34,7 +34,7 @@ ParameterKey=NumberOfNodes,ParameterValue=1 \
 --capabilities CAPABILITY_NAMED_IAM
 </pre>
 
-or you can use the CloudFormation Stack Wizard
+or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=k4k8s-eks&templateURL=https://k4k8s-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack.png)
 
