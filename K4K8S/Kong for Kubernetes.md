@@ -158,3 +158,8 @@ X-Kong-Response-Latency: 0
     "message": "no Route matched with those values"
 }
 </pre>
+
+
+## Kong for Kubernetes official documentation
+
+Browse this [guides](https://github.com/Kong/kubernetes-ingress-controller) to get started configuring Kong for Kubernetes.
