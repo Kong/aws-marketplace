@@ -1,4 +1,4 @@
-![Kong](https://github.com/Kong/aws-marketplace/screenshots/K4K8S2.png)
+![Kong](https://github.com/Kong/aws-marketplace/blob/master/screenshots/K4K8S2.png)
 
 ## Kong Kubernetes Ingress Controller
 
