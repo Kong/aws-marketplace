@@ -116,7 +116,7 @@ ParameterKey=KubeConfigPath,ParameterValue=s3://eks-k4k8s-eksstack-167ovszglh163
 ParameterKey=KubeManifestLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH16-KubeManifestLambda-1DNBS8T2VF6BT
 </pre>
 
-or you can use the CloudFormation Stack Wizard
+or you can use the CloudFormation Stack [Wizard](https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s.yaml)
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack2.png)
 
