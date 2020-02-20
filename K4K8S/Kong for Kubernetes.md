@@ -91,7 +91,7 @@ kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP
 
 ### Get the EKS Cluster Output Parameters
 
-After creating your EKS Cluster to the CloudFormation results tab to get the following output parameters (each one of them has already its respective value)
+After creating your EKS Cluster go to the CloudFormation results tab and get the following output parameters (each one of them has already its respective value)
 
 1. KubeClusterName=EKS-gGE9I3ePoWUw
 2. HelmLambdaArn=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH163-Functi-HelmLambda-1TFUHPM3HIQ2Y
