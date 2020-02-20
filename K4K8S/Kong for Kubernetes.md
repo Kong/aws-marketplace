@@ -9,7 +9,7 @@ This CloudFormation template based offering is meant for pre-production and prod
 ## Step 1: Key Pair
 A [Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) must be configured in the region you plan to deploy your EKS Cluster.
 
-![KeyPair](https://github.com/Kong/aws-marketplace/blob/media/KeyPair.png)
+![KeyPair](https://github.com/Kong/aws-marketplace/blob/master/screenshots/KeyPair.png)
 
 
 
@@ -36,7 +36,7 @@ ParameterKey=NumberOfNodes,ParameterValue=1 \
 
 or you can use the CloudFormation Stack Wizard
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/media/CloudFormationStack.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack.png)
 
 ### Checking your EKS Cluster
 
@@ -99,7 +99,7 @@ After creating your EKS Cluster to the CloudFormation results tab to get the fol
 4. KubeManifestLambdaArn=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH16-KubeManifestLambda-1DNBS8T2VF6BT	
 
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/media/EKSClusterParams.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKSClusterParams.png)
 
 
 ### Use the parameters the deploy K4K8S
@@ -118,7 +118,7 @@ ParameterKey=KubeManifestLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:15
 
 or you can use the CloudFormation Stack Wizard
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/media/CloudFormationStack2.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack2.png)
 
 
 
