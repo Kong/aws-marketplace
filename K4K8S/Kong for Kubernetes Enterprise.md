@@ -1,6 +1,6 @@
 # Kong for Kubernetes Enterprise
 
-This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Enterprise capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service, integration with AWS Lambda Functions or OIDC grants implemented with Cognito. Launch Kong for Kubernetes in a new EKS Cluster or to an existing one.
+This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Enterprise capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service, integration with AWS Lambda Functions or OIDC grants implemented with Cognito. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
 
 
 #  Installation Process
@@ -87,7 +87,17 @@ kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP
 
 
 
-## Step 3: Deploy Kong for Kubernetes
+## Step 3: Deploy Kong for Kubernetes Enterprise
+
+### Create a "kong" namespace
+$ kubectl create namespace kong
+
+### Create a secret with your license file
+$ kubectl create secret generic kong-enterprise-license -n kong --from-file=./license
+
+### Create a secret for the docker registry
+$ kubectl create secret -n kong docker-registry kong-enterprise-docker --docker-server=kong-docker-kong-enterprise-k8s.bintray.io --docker-username=<userid> --docker-password=<apikey> -n kong
+
 
 ### Get the EKS Cluster Output Parameters
 
@@ -102,13 +112,13 @@ After creating your EKS Cluster go to the CloudFormation results tab and get the
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKSClusterParams.png)
 
 
-### Use the parameters the deploy K4K8S
+### Use the parameters the deploy K4K8S Enterprise
 
-Again, you can deploy K4K8S with the AWS CLI command:
+Again, you can deploy K4K8S with the AWS CLI:
 
 <pre>
-aws cloudformation create-stack --stack-name k4k8s --template-url \
-https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s.yaml \
+aws cloudformation create-stack --stack-name k4k8s-eks --template-url \
+https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s-enterprise.yaml \
 --parameters \
 ParameterKey=KubeClusterName,ParameterValue=EKS-gGE9I3ePoWUw \
 ParameterKey=HelmLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH163-Functi-HelmLambda-1TFUHPM3HIQ2Y \
@@ -116,7 +126,7 @@ ParameterKey=KubeConfigPath,ParameterValue=s3://eks-k4k8s-eksstack-167ovszglh163
 ParameterKey=KubeManifestLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH16-KubeManifestLambda-1DNBS8T2VF6BT
 </pre>
 
-or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=k4k8s-eks&templateURL=https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s.yaml)
+or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=k4k8s-eks&templateURL=https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s-enterprise.yaml)
 
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack2.png)
@@ -124,40 +134,64 @@ or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/
 
 
 
-## Step 4: Checking Kong for Kubernetes deployment
+## Step 4: Checking Kong for Kubernetes Enterprise deployment
 
 <pre>
 $ kubectl get pod --all-namespaces
 NAMESPACE     NAME                         READY   STATUS    RESTARTS   AGE
-kong          kong-kong-58df9bbc9d-gl5nx   2/2     Running   1          2m12s
-kube-system   aws-node-tvxr7               1/1     Running   0          17m
-kube-system   coredns-b8cff6cf8-2c2nr      1/1     Running   0          23m
-kube-system   coredns-b8cff6cf8-lqls6      1/1     Running   0          23m
-kube-system   kube-proxy-2gw7z             1/1     Running   0          17m
+kong          kong-kong-556d9c4b4d-cbw7r   2/2     Running   1          100s
+kube-system   aws-node-qdh9c               1/1     Running   0          34h
+kube-system   coredns-b8cff6cf8-bxgvl      1/1     Running   0          34h
+kube-system   coredns-b8cff6cf8-hpf5f      1/1     Running   0          34h
+kube-system   kube-proxy-wldb5             1/1     Running   0          34h
 </pre>
 
 <pre>
 $ kubectl get service --all-namespaces
-NAMESPACE     NAME              TYPE           CLUSTER-IP      EXTERNAL-IP                                                                  PORT(S)                      AGE
-default       kubernetes        ClusterIP      172.20.0.1      <none>                                                                       443/TCP                      25m
-kong          kong-kong-proxy   LoadBalancer   172.20.97.128   afd0e739b4e5f11ea9bd40645b942d98-1097734905.ca-central-1.elb.amazonaws.com   80:30880/TCP,443:31916/TCP   4m18s
-kube-system   kube-dns          ClusterIP      172.20.0.10     <none>                                                                       53/UDP,53/TCP                25m
+NAMESPACE     NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP                                                                 PORT(S)                         AGE
+default       kubernetes            ClusterIP      172.20.0.1       <none>                                                                      443/TCP                         34h
+kong          kong-kong-manager     NodePort       172.20.55.17     <none>                                                                      8002:31652/TCP,8445:32368/TCP   117s
+kong          kong-kong-portal      NodePort       172.20.235.210   <none>                                                                      8003:32260/TCP,8446:32000/TCP   117s
+kong          kong-kong-portalapi   NodePort       172.20.84.213    <none>                                                                      8004:31032/TCP,8447:30923/TCP   117s
+kong          kong-kong-proxy       LoadBalancer   172.20.184.88    a8ecc6761581f11eaafac02f0c23a054-836684746.ca-central-1.elb.amazonaws.com   80:30964/TCP,443:30719/TCP      117s
+kube-system   kube-dns              ClusterIP      172.20.0.10      <none>                                                                      53/UDP,53/TCP                   34h
 </pre>
 
 
 <pre>
-$ http afd0e739b4e5f11ea9bd40645b942d98-1097734905.ca-central-1.elb.amazonaws.com
+$ http a8ecc6761581f11eaafac02f0c23a054-836684746.ca-central-1.elb.amazonaws.com
 HTTP/1.1 404 Not Found
 Connection: keep-alive
 Content-Length: 48
 Content-Type: application/json; charset=utf-8
-Date: Thu, 13 Feb 2020 12:59:18 GMT
-Server: kong/1.4.3
-X-Kong-Response-Latency: 0
+Date: Tue, 25 Feb 2020 22:40:56 GMT
+Server: kong/1.4.2.0-enterprise-k8s
+X-Kong-Response-Latency: 1
 
 {
     "message": "no Route matched with those values"
 }
+</pre>
+
+<pre>
+$ kubectl logs kong-kong-556d9c4b4d-cbw7r -n kong ingress-controller
+-------------------------------------------------------------------------------
+Kong Ingress controller
+  Release:    0.7.1
+  Build:      1527700
+  Repository: git@github.com:kong/kubernetes-ingress-controller.git
+  Go:         go1.13.1
+-------------------------------------------------------------------------------
+
+I0225 22:38:37.692355       1 main.go:407] Creating API client for https://172.20.0.1:443
+I0225 22:38:37.701145       1 main.go:451] Running in Kubernetes Cluster version v1.14+ (v1.14.9-eks-502bfb) - git (clean) commit 502bfb383169b124d87848f89e17a04b9fc1f6f0 - platform linux/amd64
+I0225 22:38:37.915516       1 main.go:187] kong version: 1.4.2-0-enterprise-k8s
+I0225 22:38:37.915541       1 main.go:196] Kong datastore: off
+I0225 22:38:38.037913       1 controller.go:224] starting Ingress controller
+I0225 22:38:38.045261       1 status.go:201] new leader elected: kong-kong-556d9c4b4d-cbw7r
+I0225 22:38:38.105963       1 kong.go:66] successfully synced configuration to Kong
+I0225 22:38:41.371978       1 kong.go:57] no configuration change, skipping sync to Kong
+I0225 22:38:44.774218       1 kong.go:57] no configuration change, skipping sync to Kong
 </pre>
 
 
