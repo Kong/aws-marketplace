@@ -14,6 +14,6 @@ Kong for Kubernetes Enterprise includes all Enterprise plugins and comes with 24
 
 
 
-### Kong for Kubernetes with Kong Enterprise
+### [Kong for Kubernetes with Kong Enterprise](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes%20Enterprise.md)
 
 Kong for Kubernetes can integrate with Kong Enterprise to provide a single pane of visibility across all of your services that are running in Kubernetes and non-Kubernetes environments.
