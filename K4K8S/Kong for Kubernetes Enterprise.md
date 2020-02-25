@@ -96,7 +96,7 @@ $ kubectl create namespace kong
 $ kubectl create secret generic kong-enterprise-license -n kong --from-file=./license
 
 ### Create a secret for the docker registry
-$ kubectl create secret -n kong docker-registry kong-enterprise-docker --docker-server=kong-docker-kong-enterprise-k8s.bintray.io --docker-username=<userid> --docker-password=<apikey> -n kong
+$ kubectl create secret -n kong docker-registry kong-enterprise-docker --docker-server=kong-docker-kong-enterprise-k8s.bintray.io --docker-username=\<userid\> --docker-password=\<apikey\> -n kong
 
 
 ### Get the EKS Cluster Output Parameters
