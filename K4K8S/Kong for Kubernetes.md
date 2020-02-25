@@ -1,6 +1,6 @@
-# Kong for Kubernetes
+# Kong for Kubernetes Enterprise
 
-This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Community capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service or integration with AWS Lambda Functions. Launch Kong for Kubernetes in a new EKS Cluster or to an existing one.
+This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Enterprise capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service, integration with AWS Lambda Functions or OIDC grants implemented with Cognito. Launch Kong for Kubernetes in a new EKS Cluster or to an existing one.
 
 
 #  Installation Process
