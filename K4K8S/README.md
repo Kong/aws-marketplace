@@ -7,7 +7,7 @@ The only fully native Kubernetes Ingress Controller for enhanced API management.
 Choose your Kong Kubernetes Ingress Controller:
 
 
-### Kong for Kubernetes Enterprise
+### [Kong for Kubernetes Enterprise] (https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes.md)
 
 Kong for Kubernetes Enterprise is an enhanced version of the Open-Source Ingress Controller. It includes all Enterprise plugins and comes with 24x7 support for worry-free production deployment. This is available to enterprise customers of Kong, Inc. only.
 
