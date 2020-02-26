@@ -117,7 +117,7 @@ After creating your EKS Cluster go to the CloudFormation results tab and get the
 Again, you can deploy K4K8S with the AWS CLI:
 
 <pre>
-aws cloudformation create-stack --stack-name k4k8s-eks --template-url \
+aws cloudformation create-stack --stack-name k4k8s --template-url \
 https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s-enterprise.yaml \
 --parameters \
 ParameterKey=KubeClusterName,ParameterValue=EKS-gGE9I3ePoWUw \
