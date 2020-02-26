@@ -1,6 +1,6 @@
 # Kong for Kubernetes with Kong Enterprise
 
-If you are an Enterprise customer, you have an option of running the [Enterprise version of the Ingress Controller](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes%20Enterprise.md), which includes all the Enterprise plugins but does not include Kong Manager or any other Enterprise features. This makes it possible to run the Ingress layer without a database, providing a very low operational and maintance footprint.
+.If you are an Enterprise customer, you have an option of running the [Enterprise version of the Ingress Controller](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes%20Enterprise.md), which includes all the Enterprise plugins but does not include Kong Manager or any other Enterprise features. This makes it possible to run the Ingress layer without a database, providing a very low operational and maintance footprint.
 
 However, in some cases, those enterprise features are necessary, and for such use-cases we support another deployment - Kong for Kubernetes with Kong Enterprise.
 
