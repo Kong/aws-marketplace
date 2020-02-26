@@ -1,6 +1,12 @@
 # Kong for Kubernetes with Kong Enterprise
 
-This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Enterprise capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service, integration with AWS Lambda Functions or OIDC grants implemented with Cognito. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
+If you are an Enterprise customer, you have an option of running the [Enterprise version of the Ingress Controller](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes%20Enterprise.md), which includes all the Enterprise plugins but does not include Kong Manager or any other Enterprise features. This makes it possible to run the Ingress layer without a database, providing a very low operational and maintance footprint.
+
+However, in some cases, those enterprise features are necessary, and for such use-cases we support another deployment - Kong for Kubernetes with Kong Enterprise.
+
+As seen in the diagram below, this deployment consists of Kong for Kubernetes deployed in Kubernetes, and is hooked up with a database. If there are services running outside Kubernetes, a regular Kong Gateway proxy can be deployed there and connected to the same database. This provides a single pane of visibility of all services that are running in your infrastructure.
+
+![K4K8SwKE](https://github.com/Kong/aws-marketplace/blob/master/screenshots/k4k8s-with-kong-enterprise.png)
 
 
 #  Installation Process
