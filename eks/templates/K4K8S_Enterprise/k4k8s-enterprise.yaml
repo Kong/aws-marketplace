@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Deploy K4K8S Enterprise into an existing Kubernetes cluster"
+Parameters:
+  KubeManifestLambdaArn:
+    Type: String
+  HelmLambdaArn:
+    Type: String
+  KubeConfigPath:
+    Type: String
+  KubeConfigKmsContext:
+    Type: String
+    Default: "EKSQuickStart"
+  KubeClusterName:
+    Type: String
+Resources:
+  KubeManifestK4K8S:
+    Type: "Custom::KubeManifest"
+    Version: '1.0'
+    Properties:
+      ServiceToken: !Ref KubeManifestLambdaArn
+      KubeConfigPath: !Ref KubeConfigPath
+      KubeConfigKmsContext: !Ref KubeConfigKmsContext
+      Manifest:
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          namespace: kong
+        data:
+          ServiceCatalogReleaseName: !Ref K4K8S
+          ServiceCatalogKubernetesServiceName: !GetAtt K4K8S.Service0
+  K4K8S:
+    Type: "Custom::Helm"
+    Version: '1.0'
+    Properties:
+      ServiceToken: !Ref HelmLambdaArn
+      KubeConfigPath: !Ref KubeConfigPath
+      KubeConfigKmsContext: !Ref KubeConfigKmsContext
+      RepoUrl: https://charts.konghq.com
+      Namespace: kong
+      Chart: kong/kong
+      Name: kong
+      Values:
+        image.repository: kong-docker-kong-enterprise-k8s.bintray.io/kong-enterprise-k8s
+        image.tag: 1.4.2.0-alpine
+        image.pullSecrets[0]: kong-enterprise-docker
+        enterprise.enabled: true
+        enterprise.license_secret: kong-enterprise-license
+        ingressController.enabled: true
+        ingressController.image.tag: 0.7.1
