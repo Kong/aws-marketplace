@@ -158,6 +158,6 @@ Redirect your browser to http://localhost:5681/gui and click on <b>Skip to Dashb
 ![KumaGUI](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/GUI.png)
 
 
-## Kong for Kubernetes official documentation
+## Kuma official documentation
 
-Browse this [guides](https://github.com/Kong/kubernetes-ingress-controller) to get started configuring Kong for Kubernetes.
+Browse this [guides](https://kuma.io/docs) to get started configuring Kuma.
