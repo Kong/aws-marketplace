@@ -21,7 +21,7 @@ You can create your EKS Cluster with the AWS CLI command:
 aws cloudformation create-stack --stack-name eks-kuma --template-url \
 https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml \
 --parameters \
-ParameterKey=KeyPairName,ParameterValue=acqua-frankfurt \
+ParameterKey=KeyPairName,ParameterValue=ekskey \
 ParameterKey=NumberOfAZs,ParameterValue=3 \
 ParameterKey=VPCCIDR,ParameterValue=10.0.0.0/16 \
 ParameterKey=PrivateSubnet1CIDR,ParameterValue=10.0.0.0/19 \
@@ -41,7 +41,7 @@ ParameterKey=EKSPublicAccessEndpoint,ParameterValue=Enabled \
 --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
 </pre>
 
-or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=kuma-eks&templateURL=https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
+or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=eks-kuma&templateURL=https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step1.png)
 
