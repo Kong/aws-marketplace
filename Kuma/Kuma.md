@@ -110,47 +110,19 @@ kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP
 
 ## Step 3: Deploy Kuma Service Mesh
 
-### Create a "kong" namespace
-$ kubectl create namespace kong
-
-### Create a secret with your license file
-$ kubectl create secret generic kong-enterprise-license -n kong --from-file=./license
-
-### Create a secret for the docker registry
-$ kubectl create secret -n kong docker-registry kong-enterprise-docker --docker-server=kong-docker-kong-enterprise-k8s.bintray.io --docker-username=\<userid\> --docker-password=\<apikey\> -n kong
-
-
-### Get the EKS Cluster Output Parameters
-
-After creating your EKS Cluster go to the CloudFormation results tab and get the following output parameters (each one of them has already its respective value)
-
-1. KubeClusterName=EKS-gGE9I3ePoWUw
-2. HelmLambdaArn=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH163-Functi-HelmLambda-1TFUHPM3HIQ2Y
-3. KubeConfigPath=s3://eks-k4k8s-eksstack-167ovszglh163-kubeconfigbucket-2fe4uwipoli7/.kube/config.enc
-4. KubeManifestLambdaArn=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH16-KubeManifestLambda-1DNBS8T2VF6BT	
-
-
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKSClusterParams.png)
-
-
-### Use the parameters the deploy K4K8S Enterprise
-
-Again, you can deploy K4K8S with the AWS CLI:
+### Deploy Kuma Service Mesh with AWS CLIS
 
 <pre>
-aws cloudformation create-stack --stack-name k4k8s --template-url \
-https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s-enterprise.yaml \
+aws cloudformation create-stack --stack-name kuma --template-url \
+https://kuma-cloudformation.s3.amazonaws.com/kuma.yaml \
 --parameters \
-ParameterKey=KubeClusterName,ParameterValue=EKS-gGE9I3ePoWUw \
-ParameterKey=HelmLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH163-Functi-HelmLambda-1TFUHPM3HIQ2Y \
-ParameterKey=KubeConfigPath,ParameterValue=s3://eks-k4k8s-eksstack-167ovszglh163-kubeconfigbucket-2fe4uwipoli7/.kube/config.enc \
-ParameterKey=KubeManifestLambdaArn,ParameterValue=arn:aws:lambda:ca-central-1:151743893450:function:eks-k4k8s-EKSStack-167OVSZGLH16-KubeManifestLambda-1DNBS8T2VF6BT
+ParameterKey=Cluster,ParameterValue=eks-kuma
 </pre>
 
-or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=k4k8s-eks&templateURL=https://k4k8s-cloudformation.s3.amazonaws.com/k4k8s-enterprise.yaml)
+or you can use the CloudFormation Stack [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=kuma&templateURL=https://kuma-cloudformation.s3.amazonaws.com/kuma.yaml)
 
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack2.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CloudFormationStack2.png)
 
 
 
