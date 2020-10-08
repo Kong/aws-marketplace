@@ -126,66 +126,36 @@ or you can use the CloudFormation Stack [CloudFormation](https://console.aws.ama
 
 
 
-
-## Step 4: Checking Kong for Kubernetes Enterprise deployment
+## Step 4: Checking Kuma Service Mesh deployment
 
 <pre>
 $ kubectl get pod --all-namespaces
-NAMESPACE     NAME                         READY   STATUS    RESTARTS   AGE
-kong          kong-kong-556d9c4b4d-cbw7r   2/2     Running   1          100s
-kube-system   aws-node-qdh9c               1/1     Running   0          34h
-kube-system   coredns-b8cff6cf8-bxgvl      1/1     Running   0          34h
-kube-system   coredns-b8cff6cf8-hpf5f      1/1     Running   0          34h
-kube-system   kube-proxy-wldb5             1/1     Running   0          34h
+NAMESPACE     NAME                                  READY   STATUS    RESTARTS   AGE
+default       kuma-control-plane-7db4999799-hzmrc   1/1     Running   0          20s
+kube-system   aws-node-qg8gg                        1/1     Running   0          126m
+kube-system   coredns-5fdf64ff8-9pk9n               1/1     Running   0          139m
+kube-system   coredns-5fdf64ff8-tbbz9               1/1     Running   0          139m
+kube-system   kube-proxy-54vxr                      1/1     Running   0          126m
 </pre>
 
 <pre>
 $ kubectl get service --all-namespaces
-NAMESPACE     NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP                                                                 PORT(S)                         AGE
-default       kubernetes            ClusterIP      172.20.0.1       <none>                                                                      443/TCP                         34h
-kong          kong-kong-manager     NodePort       172.20.55.17     <none>                                                                      8002:31652/TCP,8445:32368/TCP   117s
-kong          kong-kong-portal      NodePort       172.20.235.210   <none>                                                                      8003:32260/TCP,8446:32000/TCP   117s
-kong          kong-kong-portalapi   NodePort       172.20.84.213    <none>                                                                      8004:31032/TCP,8447:30923/TCP   117s
-kong          kong-kong-proxy       LoadBalancer   172.20.184.88    a8ecc6761581f11eaafac02f0c23a054-836684746.ca-central-1.elb.amazonaws.com   80:30964/TCP,443:30719/TCP      117s
-kube-system   kube-dns              ClusterIP      172.20.0.10      <none>                                                                      53/UDP,53/TCP                   34h
+NAMESPACE     NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                  AGE
+default       kubernetes           ClusterIP   172.20.0.1       <none>        443/TCP                                                                  140m
+default       kuma-control-plane   ClusterIP   172.20.109.231   <none>        5681/TCP,443/TCP,5676/TCP,5677/TCP,5678/TCP,5679/TCP,5682/TCP,5653/UDP   35s
+kube-system   kube-dns             ClusterIP   172.20.0.10      <none>        53/UDP,53/TCP                                                            140m
 </pre>
 
+Check Kuma GUI also. On on terminal expose the Control Plane port
 
 <pre>
-$ http a8ecc6761581f11eaafac02f0c23a054-836684746.ca-central-1.elb.amazonaws.com
-HTTP/1.1 404 Not Found
-Connection: keep-alive
-Content-Length: 48
-Content-Type: application/json; charset=utf-8
-Date: Tue, 25 Feb 2020 22:40:56 GMT
-Server: kong/1.4.2.0-enterprise-k8s
-X-Kong-Response-Latency: 1
-
-{
-    "message": "no Route matched with those values"
-}
+$ kubectl port-forward service/kuma-control-plane 5681:5681
+Forwarding from 127.0.0.1:5681 -> 5681
+Forwarding from [::1]:5681 -> 5681
 </pre>
 
-<pre>
-$ kubectl logs kong-kong-556d9c4b4d-cbw7r -n kong ingress-controller
--------------------------------------------------------------------------------
-Kong Ingress controller
-  Release:    0.7.1
-  Build:      1527700
-  Repository: git@github.com:kong/kubernetes-ingress-controller.git
-  Go:         go1.13.1
--------------------------------------------------------------------------------
-
-I0225 22:38:37.692355       1 main.go:407] Creating API client for https://172.20.0.1:443
-I0225 22:38:37.701145       1 main.go:451] Running in Kubernetes Cluster version v1.14+ (v1.14.9-eks-502bfb) - git (clean) commit 502bfb383169b124d87848f89e17a04b9fc1f6f0 - platform linux/amd64
-I0225 22:38:37.915516       1 main.go:187] kong version: 1.4.2-0-enterprise-k8s
-I0225 22:38:37.915541       1 main.go:196] Kong datastore: off
-I0225 22:38:38.037913       1 controller.go:224] starting Ingress controller
-I0225 22:38:38.045261       1 status.go:201] new leader elected: kong-kong-556d9c4b4d-cbw7r
-I0225 22:38:38.105963       1 kong.go:66] successfully synced configuration to Kong
-I0225 22:38:41.371978       1 kong.go:57] no configuration change, skipping sync to Kong
-I0225 22:38:44.774218       1 kong.go:57] no configuration change, skipping sync to Kong
-</pre>
+Redirect your browser to http://localhost:5601/gui and click on <b>Skip to Dashboard</b>
+![KumaGUI](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/GUI.png)
 
 
 ## Kong for Kubernetes official documentation
