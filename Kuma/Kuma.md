@@ -49,7 +49,7 @@ Click on <b>Next</b>
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step2.png)
 
-Click on <b>Next</b> and on <b>Next</b> again to go the <b>Review Page</b>>
+Click on <b>Next</b> and on <b>Next</b> again to go the <b>Review Page</b>
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step3.png)
 
