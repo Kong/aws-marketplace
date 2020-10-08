@@ -154,7 +154,7 @@ Forwarding from 127.0.0.1:5681 -> 5681
 Forwarding from [::1]:5681 -> 5681
 </pre>
 
-Redirect your browser to http://localhost:5601/gui and click on <b>Skip to Dashboard</b>
+Redirect your browser to http://localhost:5681/gui and click on <b>Skip to Dashboard</b>
 ![KumaGUI](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/GUI.png)
 
 
