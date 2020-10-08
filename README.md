@@ -17,4 +17,4 @@ Check the [Kong for Kubernetes](https://github.com/Kong/aws-marketplace/blob/mas
 
 Kuma is a service mesh that runs on both Kubernetes and VMs on any cloud. Built on top of Envoy and focused on simplicity, it enables  microservices transformation with out-of-the-box service connectivity and discovery, zero-trust security, traffic reliability and global observability across all traffic including cross-cluster deployments.
 
-Check the [Kuma](https://github.com/Kong/aws-marketplace/blob/master/Kuma/README.md) offer:
+Check the [Kuma](https://github.com/Kong/aws-marketplace/blob/master/Kuma/Kuma.md) offer:
