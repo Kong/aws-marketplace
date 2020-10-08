@@ -49,7 +49,7 @@ Click on <b>Next</b>
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step2.png)
 
-Click on <b>Next</b> and on <b>Next</b> again to go the <Review Page>
+Click on <b>Next</b> and on <b>Next</b> again to go the <b>Review Page</b>>
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step3.png)
 
@@ -68,21 +68,21 @@ This checking assumes you have aws cli and kubectl commands installed locally
 $ aws eks list-clusters
 {
     "clusters": [
-        "EKS-gGE9I3ePoWUw"
+        "eks-kuma"
     ]
 }
 </pre>
 
 ### Configure kubectl locally with your EKS Cluster info
 <pre>
-$ aws eks --region ca-central-1 update-kubeconfig --name EKS-gGE9I3ePoWUw
+$ aws eks --region eu-central-1 update-kubeconfig --name eks-kuma
 </pre>
 
 ### Get your Cluster info
 <pre>
 $ kubectl cluster-info
-Kubernetes master is running at https://06939856D02E23FFFFCB3DA73DA350D3.sk1.ca-central-1.eks.amazonaws.com
-CoreDNS is running at https://06939856D02E23FFFFCB3DA73DA350D3.sk1.ca-central-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+Kubernetes master is running at https://43C4C665F3F1283D711B41CDFE53FA2D.gr7.eu-central-1.eks.amazonaws.com
+CoreDNS is running at https://43C4C665F3F1283D711B41CDFE53FA2D.gr7.eu-central-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 </pre>
@@ -92,23 +92,23 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 <pre>
 $ kubectl get pod --all-namespaces
 NAMESPACE     NAME                      READY   STATUS    RESTARTS   AGE
-kube-system   aws-node-5bz45            1/1     Running   0          9m47s
-kube-system   coredns-b8cff6cf8-2682w   1/1     Running   0          13m
-kube-system   coredns-b8cff6cf8-nkfx2   1/1     Running   0          13m
-kube-system   kube-proxy-4khnp          1/1     Running   0          9m47s
+kube-system   aws-node-qg8gg            1/1     Running   0          111m
+kube-system   coredns-5fdf64ff8-9pk9n   1/1     Running   0          125m
+kube-system   coredns-5fdf64ff8-tbbz9   1/1     Running   0          125m
+kube-system   kube-proxy-54vxr          1/1     Running   0          111m
 </pre>
 
 ### Checking your Services
 <pre>
 $ kubectl get services --all-namespaces
 NAMESPACE     NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)         AGE
-default       kubernetes   ClusterIP   172.20.0.1    <none>        443/TCP         14m
-kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP   14m
+default       kubernetes   ClusterIP   172.20.0.1    <none>        443/TCP         125m
+kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP   125m
 </pre>
 
 
 
-## Step 3: Deploy Kong for Kubernetes Enterprise
+## Step 3: Deploy Kuma Service Mesh
 
 ### Create a "kong" namespace
 $ kubectl create namespace kong
