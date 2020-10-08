@@ -1,6 +1,6 @@
 # Kuma Service Mesh
 
-This CloudFormation template based offering is meant for pre-production and production environments where customers want to leverage Kong Enterprise capabilities, running on an EKS Cluster. For example, a Kong Proxy Cache implementation using AWS Elasticache for Redis, externalization of all requests processed by Kong to AWS Elasticsearch Service, integration with AWS Lambda Functions or OIDC grants implemented with Cognito. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
+This CloudFormation template based offer is meant for pre-production and production environments where customers want to leverage Kuma Service Mesh capabilities, running on an EKS Cluster. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
 
 
 #  Installation Process
@@ -18,23 +18,30 @@ A [Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.h
 You can create your EKS Cluster with the AWS CLI command:
 
 <pre>
-aws cloudformation create-stack --stack-name eks-k4k8s --template-url \
-https://k4k8s-cloudformation.s3.amazonaws.com/amazon-eks.yaml \
+aws cloudformation create-stack --stack-name eks-kuma --template-url \
+https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml \
 --parameters \
-ParameterKey=KeyPairName,ParameterValue=ekskey \
-ParameterKey=NumberOfAZs,ParameterValue=2 \
+ParameterKey=KeyPairName,ParameterValue=acqua-frankfurt \
+ParameterKey=NumberOfAZs,ParameterValue=3 \
 ParameterKey=VPCCIDR,ParameterValue=10.0.0.0/16 \
 ParameterKey=PrivateSubnet1CIDR,ParameterValue=10.0.0.0/19 \
 ParameterKey=PrivateSubnet2CIDR,ParameterValue=10.0.32.0/19 \
+ParameterKey=PrivateSubnet3CIDR,ParameterValue=10.0.64.0/19 \
 ParameterKey=PublicSubnet1CIDR,ParameterValue=10.0.128.0/20 \
 ParameterKey=PublicSubnet2CIDR,ParameterValue=10.0.144.0/20 \
-ParameterKey=AvailabilityZones,ParameterValue=ca-central-1a\\,ca-central-1b \
+ParameterKey=PublicSubnet3CIDR,ParameterValue=10.0.160.0/20 \
+ParameterKey=AvailabilityZones,ParameterValue=eu-central-1a\\,eu-central-1b\\,eu-central-1c \
 ParameterKey=RemoteAccessCIDR,ParameterValue=0.0.0.0/0 \
+ParameterKey=ProvisionBastionHost,ParameterValue=Disabled \
 ParameterKey=NumberOfNodes,ParameterValue=1 \
---capabilities CAPABILITY_NAMED_IAM
+ParameterKey=EKSClusterName,ParameterValue=eks-kuma \
+ParameterKey=EKSPublicAccessEndpoint,ParameterValue=Enabled \
+ParameterKey=ALBIngressController,ParameterValue=Disabled \
+ParameterKey=EKSPublicAccessEndpoint,ParameterValue=Enabled \
+--capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
 </pre>
 
-or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=k4k8s-eks&templateURL=https://k4k8s-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
+or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=kuma-eks&templateURL=https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack.png)
 
