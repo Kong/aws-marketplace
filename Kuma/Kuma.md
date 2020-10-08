@@ -49,6 +49,16 @@ Click on <b>Next</b>
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step2.png)
 
+Click on <b>Next</b> and on <b>Next</b> again to go the <Review Page>
+
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step3.png)
+
+On the bottom of the page click on both check boxes: <b>I acknowledge that AWS CloudFormation might create IAM resources with custom names.</b> and <b>I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND</b>.
+
+Click on "Create stack"
+
+
+
 ### Checking your EKS Cluster
 
 This checking assumes you have aws cli and kubectl commands installed locally
