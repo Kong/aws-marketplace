@@ -119,7 +119,7 @@ https://kuma-cloudformation.s3.amazonaws.com/kuma.yaml \
 ParameterKey=Cluster,ParameterValue=eks-kuma
 </pre>
 
-or you can use the CloudFormation Stack [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=kuma&templateURL=https://kuma-cloudformation.s3.amazonaws.com/kuma.yaml)
+or you can use the [CloudFormation Stack](https://console.aws.amazon.com/cloudformation/home?region=eu-central-1#/stacks/new?stackName=kuma&templateURL=https://kuma-cloudformation.s3.amazonaws.com/kuma.yaml)
 
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step4.png)
