@@ -43,7 +43,7 @@ ParameterKey=EKSPublicAccessEndpoint,ParameterValue=Enabled \
 
 or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=kuma-eks&templateURL=https://kuma-cloudformation.s3.amazonaws.com/amazon-eks.yaml)
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CloudFormation-step1.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step1.png)
 
 ![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CloudFormationStack.png)
 
