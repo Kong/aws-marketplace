@@ -1,4 +1,4 @@
-# Kong for Kubernetes and AWS Elastic Kubernetes Services1
+# Kong for Kubernetes and AWS Elastic Kubernetes Services
 
 ![Kong](https://github.com/Kong/aws-marketplace/blob/master/screenshots/Kong2.jpeg) ![EKS](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKS.png)
 
