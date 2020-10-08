@@ -13,7 +13,7 @@ Check the [Kong for Kubernetes](https://github.com/Kong/aws-marketplace/blob/mas
 
 # Kuma Service Mesh and AWS Elastic Kubernetes Services
 
-![Kong](https://github.com/Kong/aws-marketplace/blob/master/screenshots/Kong2.jpeg) ![EKS](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKS.png)
+![Kong](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/kuma.jpeg) ![EKS](https://github.com/Kong/aws-marketplace/blob/master/screenshots/EKS.png)
 
 The only fully native Kubernetes Ingress Controller for enhanced API management.
 
