@@ -47,7 +47,7 @@ or you can use the CloudFormation Stack [Wizard](https://console.aws.amazon.com/
 
 Click on <b>Next</b>
 
-![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/screenshots/CF-step2.png)
+![CloudFormation](https://github.com/Kong/aws-marketplace/blob/master/Kuma/screenshots/CF-step2.png)
 
 ### Checking your EKS Cluster
 
