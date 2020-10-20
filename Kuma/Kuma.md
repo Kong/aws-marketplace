@@ -160,4 +160,4 @@ Redirect your browser to http://localhost:5681/gui and click on <b>Skip to Dashb
 
 ## Kuma official documentation
 
-Browse this [guides](https://kuma.io/docs) to get started configuring Kuma.
+Browse these [guides](https://kuma.io/docs) to get started configuring Kuma.
