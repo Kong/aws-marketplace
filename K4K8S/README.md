@@ -7,10 +7,11 @@ The only fully native Kubernetes Ingress Controller for enhanced API management.
 Choose your Kong Kubernetes Ingress Controller:
 
 
-## [Kong for Kubernetes](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes.md)
+## Kong for Kubernetes
 
 The native Kubernetes Ingress Controller for enhanced API management
 
+[Terraform Installation](https://github.com/Kong/aws-marketplace/blob/master/K4K8S/Kong%20for%20Kubernetes%20Terraform.md)
 
 
 
