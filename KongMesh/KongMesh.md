@@ -1,6 +1,6 @@
-# Kuma Service Mesh
+# Kong Mesh
 
-This CloudFormation template based offer is meant for pre-production and production environments where customers want to leverage Kuma Service Mesh capabilities, running on an EKS Cluster. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
+This CloudFormation template based offer is meant for pre-production and production environments where customers want to leverage Kong Mesh capabilities, running on an EKS Cluster. Launch Kong Mesh in a new EKS Cluster or to an existing one.
 
 
 #  Installation Process
@@ -108,9 +108,9 @@ kube-system   kube-dns     ClusterIP   172.20.0.10   <none>        53/UDP,53/TCP
 
 
 
-## Step 3: Deploy Kuma Service Mesh
+## Step 3: Deploy Kong Mesh
 
-### Deploy Kuma Service Mesh with AWS CLIS
+### Deploy Kong Mesh with AWS CLI
 
 <pre>
 aws cloudformation create-stack --stack-name kuma --template-url \

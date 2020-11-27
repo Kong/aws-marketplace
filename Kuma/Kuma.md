@@ -1,6 +1,6 @@
 # Kuma Service Mesh
 
-This CloudFormation template based offer is meant for pre-production and production environments where customers want to leverage Kuma Service Mesh capabilities, running on an EKS Cluster. Launch Kong for Kubernetes Enterprise in a new EKS Cluster or to an existing one.
+This CloudFormation template based offer is meant for pre-production and production environments where customers want to leverage Kuma Service Mesh capabilities, running on an EKS Cluster. Launch Kuma in a new EKS Cluster or to an existing one.
 
 
 #  Installation Process
